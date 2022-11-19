@@ -1,34 +1,40 @@
-import streamlit as st 
+import streamlit as st
 
-# App title
-st.title("Text Summarization ")
+# tabs
+supervised_tab, unsupervised_tab = st.tabs(["🤖 By Supervised", "🦸 By Unsupervised"])
 
-radio_method = st.radio("Methods", ["By Supervised", "By Unsupervised"], index=0, horizontal=True)
+# text summarization with the supervised method
+with supervised_tab:
+    # App title
+    st.title("Text Summarization (Supervised)")
 
-# line divider
-st.write("***")
-
-if radio_method == "By Supervised":
-    title_input = st.text_input("Enter News Title")
-    body_input = st.text_area("Enter News Body")
+    title_input = st.text_input("Enter News Title", key="input_title_supervised")
+    body_input = st.text_area("Enter News Body", key="input_body_supervised")
+    button_supervised = st.button("Summarize", key="button_supervised")
 
     # line divider
     st.write("***")
 
     # result placeholder
     result_placeholder = st.empty()
-    result_placeholder.text_area("Here is the result", disabled=True)
+    result_placeholder.text_area("Here is the result", key="output_summary_supervised", disabled=True)
 
-    if st.button("Summarize"):
+    if button_supervised:
         # summarize
         title = title_input.title()
         body = body_input.title()
 
         # show the result
         result_placeholder.text_area("Here is the result", "Summarized paragraphs", disabled=True)
-else:
-    title_input = st.text_input("Enter News Title")
-    body_input = st.text_area("Enter News Body")
+
+# text summarization with the unsupervised method
+with unsupervised_tab:
+    # App title
+    st.title("Text Summarization (Unsupervised)")
+
+    title_input = st.text_input("Enter News Title", key="input_title_unsupervised")
+    body_input = st.text_area("Enter News Body", key="input_body_unsupervised")
+    button_unsupervised = st.button("Summarize", key="button_unsupervised")
 
     # line divider
     st.write("***")
@@ -39,9 +45,9 @@ else:
 
     # result placeholder
     result_placeholder = st.empty()
-    result_placeholder.text_area("Here is the result", disabled=True)
+    result_placeholder.text_area("Here is the result", key="output_summary_unsupervised", disabled=True)
 
-    if st.button("Summarize 2"):
+    if button_unsupervised:
         # summarize
         title = title_input.title()
         body = body_input.title()
@@ -49,3 +55,4 @@ else:
         # show the result
         res = cluster_placeholder.selectbox("Choose Cluster", ["Overall", "Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4"])
         result_placeholder.text_area("Here is the result", "Summarized paragraphs", disabled=True)
+
