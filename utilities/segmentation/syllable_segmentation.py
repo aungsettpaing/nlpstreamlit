@@ -1,5 +1,4 @@
 def syllable_break(sentence, option):
-    print(sentence, option)
     import re
     # myanmar character list
     special = "[ဣဤဧဩဿဪ၌၍၏ဥဦ၎ဿ]"
