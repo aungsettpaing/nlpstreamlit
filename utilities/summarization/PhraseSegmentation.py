@@ -37,7 +37,7 @@ def do_phrase_break(data):
     sentences,_ = SentenceSegmentation.sentence_segmentation(data)  # sentence segmentation
     output = list()
     for sent in sentences:
-        logger.error(sent)
+        # logger.error(sent)
         #formatted_data = re.sub('[?၊\\(\\)]', ' ', sent)  # clean text, remove unwanted symbols
         formatted_data = re.sub(r'\s+', ' ', sent)  # replace multiple whitespaces into single one
         syllables = Syllabification.do_syllable_break(formatted_data)  # syllable break

@@ -42,7 +42,7 @@ def _is_in_dictionary(word, found_words, not_found_words, stop_words, dict_tag, 
     else:
         found_words.add(word)
         found = True
-    logger.info(found_words)
+    # logger.info(found_words)
     return found
 
 
@@ -81,7 +81,7 @@ def do_word_break(data):
                                                 dict_tag, dict_count, phrase_boundary, max_syllable)  # word break
         temp = "_".join(segmented_text)
         output.append(temp)
-        logger.info(output)
+        # logger.info(output)
     return output, "\n\n".join(output)
 
 

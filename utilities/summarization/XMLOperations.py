@@ -25,13 +25,13 @@ def read_xml_tree(path):
 def do_update_document_by_id(document_id, update_sentence_list):
     tree = read_xml_tree("resource/myanmar_news_xml.xml")  # read xml
     root = tree.getroot()  # get xml root
-    logger.error("Update Sentence" , update_sentence_list)
+    # logger.error("Update Sentence" , update_sentence_list)
     for document in root.iter("document"):
         if document.attrib['documentid'] == str(document_id):
             for sentence in document.iter("sentence"):
                 if sentence.attrib["sentenceid"] in update_sentence_list:
                     sentence.attrib['class'] = str(1)
-                    logger.error(sentence.attrib['class'])
+                    # logger.error(sentence.attrib['class'])
                 else:
                     if sentence.attrib['class'] == "1":
                         sentence.attrib['class'] = str(0)
