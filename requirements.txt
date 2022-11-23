@@ -3,3 +3,4 @@ audio-recorder-streamlit
 tensorflow
 nltk
 scikit-learn
+matplotlib
