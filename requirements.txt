@@ -4,3 +4,7 @@ tensorflow
 nltk
 scikit-learn
 matplotlib
+# bokeh
+# streamlit-bokeh-events
+# librosa
+# pyaudio

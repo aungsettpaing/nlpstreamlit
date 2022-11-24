@@ -23,7 +23,7 @@ st.markdown(
         I love watching football (I also love to play but I can't 😩) and now you must know which team I am a fan of. This idea of bite-sized project came out while I was learning google data analytics from Coursera. It includes Arsenal's last 4 years performance and it explains that Mike Dean, one of the referees, is not that biased against us!
         
         ##### 2. Gender Detection
-        I was just wondering what if our gender can be guessed when registering to some sites right after adding our names. This, however, only covers for the Burmese names. Plus, there is another option for detecting gender - our voice!
+        I was just wondering what if our gender can be guessed when registering to some sites right after adding our names. This, however, only covers for the Burmese names.
         
 
         ##### 3. Text Summarization
