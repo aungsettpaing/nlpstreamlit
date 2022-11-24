@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import os 
 import matplotlib.pyplot as plt
+import math
+
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(PROJECT_ROOT)
@@ -136,14 +138,14 @@ with container.container():
                 values=["FTGT", "FTGC", "Point"],
                 aggfunc=["mean"]
         )
-        home_ground.columns = ["Goal Against", "Goal For", "Average Pts"]
+        home_ground.columns = ["Average GA", "Average GF", "Average Pts"]
 
         away_from_home = arsenal_dataset[arsenal_dataset["Home"]=="No"].pivot_table(
                 index=["season"],
                 values=["FTGT", "FTGC", "Point"],
                 aggfunc=["mean"]
         )
-        away_from_home.columns = ["Goal Against", "Goal For", "Average Pts"]
+        away_from_home.columns = ["Average GA", "Average GF", "Average Pts"]
 
         col1, col2 = st.columns(2, gap="large")
         with col1:
@@ -164,7 +166,7 @@ with container.container():
                 values=["Point", "FTGT", "FTGC"],
                 aggfunc=["mean"]
         )
-        big_6_summary.columns = ["Goal Against", "Goal For", "Average Pts"]
+        big_6_summary.columns = ["Average GA", "Average GF", "Average Pts"]
         st.line_chart(big_6_summary)
 
         col1, col2 = st.columns(2, gap="large")
@@ -224,18 +226,30 @@ with container.container():
         referees.columns = ["# In Charge", "Total Pts", "Average Pts"]
 
         col1, col2 = st.columns(2, gap="large")
+        game_threshold = int(win_draw_lose.sum() / 20) # 5% of total games
+        referees_charged_5_percent_games = referees[referees["# In Charge"] >= game_threshold].sort_values(by="Average Pts", ascending=False)[:]
         with col1:
                 st.markdown("##### Love you, Refs 🥰")
-                most_referees = referees.sort_values(by="Total Pts", ascending=False)[:6]
+                # most_referees = referees[referees["# In Charge"] >= game_threshold].sort_values(by="Average Pts", ascending=False)[:]
                 st.dataframe(
-                        most_referees.style.highlight_between(["Average Pts"], left=2, right=3, axis=1, props='background-color:rgba(0, 255, 0, 0.3);'),
+                        (referees_charged_5_percent_games[referees_charged_5_percent_games["Average Pts"]>=1.5].style
+                                        .highlight_between(["Average Pts"], 
+                                                                left=2, 
+                                                                right=3, 
+                                                                axis=1, 
+                                                                props='background-color:rgba(0, 255, 0, 0.3);')),
                         use_container_width=True
                 )
         
         with col2:
                 st.markdown("##### Sorry! Next! 🤢")
-                least_referees = referees.sort_values(by="Average Pts", ascending=True)[:6]
+                # least_referees = referees.sort_values(by="Average Pts", ascending=True)[:6]
                 st.dataframe(
-                        least_referees.style.highlight_between(["Average Pts"], left=0, right=2, axis=1, props='background-color:rgba(255, 0, 0, 0.3);'),
+                        (referees_charged_5_percent_games[referees_charged_5_percent_games["Average Pts"]<1.5].style
+                                .highlight_between(["Average Pts"], 
+                                                left=0, 
+                                                right=1.99, 
+                                                axis=1, 
+                                                props='background-color:rgba(255, 0, 0, 0.3);')),
                         use_container_width=True
                 )
