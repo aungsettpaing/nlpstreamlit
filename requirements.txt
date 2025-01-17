@@ -1,6 +1,6 @@
 streamlit==1.13.0
-audio-recorder-streamlit==2.11.0
-tensorflow
+audio-recorder-streamlit
+tensorflow==2.11.0
 nltk
 scikit-learn
 matplotlib
