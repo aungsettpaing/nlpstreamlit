@@ -1,5 +1,5 @@
 streamlit==1.13.0
-audio-recorder-streamlit
+audio-recorder-streamlit==2.11.0
 tensorflow
 nltk
 scikit-learn
