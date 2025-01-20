@@ -34,7 +34,7 @@ def predict_gender(name):
         if word in vocab:
             x[vocab.index(word)] += 1
     x = np.array(x)
-    x.shape = (1, 369)
+    x.shape = (1, 370)
     result = model.predict(x)
     result_arg = result.argmax()
     result_prob = "{:.2f}".format(result[0][result_arg] * 100) + "%"

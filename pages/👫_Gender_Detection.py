@@ -39,7 +39,15 @@ if predict_button_name:
     # Replace the placeholder with some text:
     gender_index = 0 if result[1] == "male" else 1
     placeholder.radio("Predicted Gender", ["Male", "Female", "Decide Later"], index=gender_index, horizontal=True)
-    st.write("Predicted with ", result[0], " confidence")
+    st.write("Predicted with ", result[0], " confidence!")
+
+    sorry = """
+    We sincerely apologize if our prediction was incorrect. 
+    Our gender prediction model is based on patterns in data and may not always capture the uniqueness of every individual. 
+    We deeply respect and celebrate the diversity of all identities. 
+    hank you for your understanding and feedback as we strive to improve!
+    """
+    st.write(sorry)
 
 # # gender detection with voice
 # with audio_tab:

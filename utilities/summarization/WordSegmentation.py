@@ -22,7 +22,7 @@ def set_data_structures():
 def load_dictionary():
     # load dictionary
     #dict_words = open(os.path.join(BASE, "original_dictionary.txt"), "r", encoding="utf8").read().splitlines()
-    dictionary = pd.read_csv(os.path.join(BASE, "summarization/resource/dictionary.csv"), ",", skiprows=1, header=None, encoding="utf-8")
+    dictionary = pd.read_csv(os.path.join(BASE, "summarization/resource/dictionary.csv"), sep=",", skiprows=1, header=None, encoding="utf-8")
     dct_tag = dict(dictionary.get([0,1]).values.tolist())
     dct_count = dict(dictionary.get([0,2]).values.tolist())
     stop_words = open(os.path.join(BASE, "summarization/resource/stopwords.txt"), "r", encoding="utf8").read().splitlines()
