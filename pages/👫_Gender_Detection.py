@@ -45,7 +45,7 @@ if predict_button_name:
     We sincerely apologize if our prediction was incorrect. 
     Our gender prediction model is based on patterns in data and may not always capture the uniqueness of every individual. 
     We deeply respect and celebrate the diversity of all identities. 
-    hank you for your understanding and feedback as we strive to improve!
+    Thank you for your understanding and feedback as we strive to improve!
     """
     st.write(sorry)
 
